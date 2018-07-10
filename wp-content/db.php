@@ -1,0 +1,1 @@
+C:/OSPanel/domains/wp-city-fence.loc/wp-content/plugins/query-monitor/wp-content/db.php
