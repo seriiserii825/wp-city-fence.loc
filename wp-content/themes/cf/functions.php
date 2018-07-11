@@ -4,6 +4,7 @@ require_once __DIR__ . '/inc/after-setup.php';
 require_once __DIR__ . '/inc/scripts.php';
 require_once __DIR__ . '/inc/widgets.php';
 require_once __DIR__ . '/inc/menu-class.php';
+require_once __DIR__ . '/inc/post-type.php';
 
 
 add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
