@@ -107,352 +107,57 @@
     <?php endif; ?>
 
 	<!--standarts-->
-	<section class="standarts">
-		<h2 class="section-title">Высокие стандарты качества для всех видов работ</h2>
+	<?php
+	$categories = get_categories([
+		'hide_empty' => 0,
+		'depth' => 1,
+		'exclude' => '37,1,3',
+	]);
 
+	$categories_parent = array_filter($categories, function($t){
+		if($t->parent === 0){
+			return $t;
+		}
+	});
+	?>
+	<section class="standarts" >
 		<div class="container-big">
+		<h2 class="section-title">Высокие стандарты качества для всех видов работ</h2>
 			<div class="standarts__content">
+                <?php foreach ($categories_parent as $category):?>
+                    <?php $children = get_categories([
+                        'child_of' => $category->term_id,
+                        'hide_empty' => 0
+                    ]);?>
+                    <?php if (function_exists('get_tax_image_urls')) $img_urls = get_tax_image_urls($children[0]->term_id ,'full'); ?>
+
+					<?php
+						$children_links = wp_list_categories([
+							'title_li' => '',
+							'hide_empty' => 0,
+							'child_of' => $category->term_id,
+							'echo' => false
+						]);
+					?>
 				<div class="standarts__item">
 					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-1.jpg" alt="">
+						<img width="355" height="300" src="<?php echo $img_urls[0] ?>" alt="">
 					</div>
 					<!-- /.img-wrap -->
 					<div class="standarts__item-content">
 						<h6 class="standarts__item-title">
-							<a href="#">Заборы</a>
+							<a href="#"><?php echo $category->name;?></a>
 						</h6>
 						<!-- /.standarts__item-title -->
 						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
+                            <?php echo $children_links;?>
 						</ul>
 						<!-- /.standarts__item-list -->
 					</div>
 					<!-- /.standarts__item-content -->
 				</div>
 				<!-- /.standarts__item -->
-
-
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-2.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Навесы</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-				<!-- /.standarts__item -->
-
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-3.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Калитки и ворота</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-
-
-				<!-- /.standarts__item -->
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-4.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Металлопрокат</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-
-
-				<!-- /.standarts__item -->
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-5.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Откатные ворота</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-
-
-				<!-- /.standarts__item -->
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-6.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Теплицы</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-
-
-				<!-- /.standarts__item -->
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-7.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Бытовки</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-
-
-				<!-- /.standarts__item -->
-				<div class="standarts__item">
-					<div class="img-wrap">
-						<img src="<?php bloginfo('template_url'); ?>/html/assets/i/standarts/standarts-8.jpg" alt="">
-					</div>
-					<!-- /.img-wrap -->
-					<div class="standarts__item-content">
-						<h6 class="standarts__item-title">
-							<a href="#">Услуги</a>
-						</h6>
-						<!-- /.standarts__item-title -->
-						<ul class="standarts__item-list">
-							<li>
-								<a href="#">Заборы из профлиста</a>
-							</li>
-							<li>
-								<a href="#">Заборы из дерева</a>
-							</li>
-							<li>
-								<a href="#">Заборы из евроштакетника</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сетки рабица</a>
-							</li>
-							<li>
-								<a href="#">Сварные заборы</a>
-							</li>
-							<li>
-								<a href="#">Заборы из 3D панелей</a>
-							</li>
-							<li>
-								<a href="#">Заборы из сварной сетки</a>
-							</li>
-							<li>
-								<a href="#">Заборы из поликрбоната</a>
-							</li>
-						</ul>
-						<!-- /.standarts__item-list -->
-					</div>
-					<!-- /.standarts__item-content -->
-				</div>
-				<!-- /.standarts__item -->
+                <?php endforeach;?>
 			</div>
 		</div>
 

@@ -4032,6 +4032,15 @@ main.category .img-wrap img {
     ====================================================*/
 }
 
+.standarts__item .img-wrap {
+	height: 300px;
+}
+
+.standarts__item .img-wrap img {
+	max-width: 100%;
+	height: auto;
+}
+
 @media screen and (max-width: 950px) {
 	.standarts__item {
 		width: 50%;
